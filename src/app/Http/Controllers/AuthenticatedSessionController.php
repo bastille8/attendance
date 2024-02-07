@@ -11,18 +11,18 @@ class AuthenticatedSessionController extends Controller
 {
     public function index(Request $request)
     {
-        // stampsテーブルから一致するレコードを取得
+        // stampsテーブルからレコードを取得
         $stamp = Stamp::all()->where('work_in', $request->work_in)->first();
 
         // レコードが存在するかどうかをチェック
         if ($stamp) {
-            // レコードが存在する場合ボタンを非活性にする
+            // レコードが存在する場合
             $stamp = true;
         } else {
-            // レコードが存在しない場合ボタンを活性にする
+            // レコードが存在しない場合
             $stamp = false;
         }
-        
+
         return view('index', compact('stamp'));
     }
 

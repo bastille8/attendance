@@ -14,7 +14,11 @@
         <form action="/work_in" method="post" class="attendance__button">
             @csrf
             <input type="hidden" name="stamps_id" value="{{ Auth::user()->id }}">
-            <button class="attendance__button-submit" type="submit" {{ 'stamp' }}>勤務開始</button>
+            @if ($stamp === false)
+            <button class="attendance__button-submit" type="submit">勤務開始</button>
+            @else
+            <button class="attendance__button-submit" type="submit" disabled>勤務開始</button>
+            @endif
         </form>
         <form action="/work_out" method="post" class="attendance__button">
             @csrf
