@@ -15,9 +15,9 @@ class CreateRestsTable extends Migration
     {
         Schema::create('rests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('rests_id')->constrained('stamps');
-            $table->time('rest_in', $precision = 0);
-            $table->time('rest_out', $precision = 0);
+            $table->foreignId('rests_id')->references('stamps_id')->on('stamps');
+            $table->time('rest_in');
+            $table->time('rest_out')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

@@ -23,4 +23,4 @@ class Stamp extends Model
         return $this->belongsTo(User::class);
     }
 
-} 
+}

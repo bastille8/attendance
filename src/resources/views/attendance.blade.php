@@ -25,5 +25,11 @@
         </table>
     </div>
 </form>
+<style>
+    svg.w-5.h-5 {
+        width: 30px;
+        height: 30px;
+    }
+</style>
 {{ $stamps->links() }}
 @endsection
