@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+<!--日付別ページネイト-->
+{{ $stamps_day->links(('vendor.pagination.tailwind2')) }}
 <form class="form" action="/attendance" method="post">
     <div class="attendance-table">
         <table class="attendance-table__inner">
@@ -33,5 +35,5 @@
         height: 30px;
     }
 </style>
-{{ $stamps->links() }}
+{{ $stamps->links(('vendor.pagination.tailwind')) }}
 @endsection

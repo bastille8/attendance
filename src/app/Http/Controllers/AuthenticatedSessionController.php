@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stamp;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 
 
 class AuthenticatedSessionController extends Controller
@@ -30,8 +32,9 @@ class AuthenticatedSessionController extends Controller
 
     public function create()
     {
+        $stamps_day = DB::table('stamps', 'stamps_day')->paginate(5);
         $stamps = Stamp::Paginate(5);
-        return view('attendance', compact('stamps'));
+        return view('attendance', compact('stamps', 'stamps_day'));
     }
 
 }
