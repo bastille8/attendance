@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Stamp;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 
 class AuthenticatedSessionController extends Controller
 {
     public function index(Request $request)
     {
-        // stampsテーブルからレコードを取得
+        //stamps_dayに現日付を挿入し打刻日と照らし合わせる
+        $request->stamps_day = new Carbon(Carbon::now());
+        // Stampモデルからレコードを取得
         $stamp = Stamp::all()->where('stamps_day', $request->stamps_day)->first();
 
         // レコードが存在するかどうかをチェック
