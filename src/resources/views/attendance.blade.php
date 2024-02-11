@@ -15,13 +15,15 @@
                 <th class="attendance-table__header">休憩時間</th>
                 <th class="attendance-table__header">勤務時間</th>
             </tr>
+            @foreach ($stamps as $value)
             <tr class="attendance-table__row">
-                <td class="attendance-table__item">サンプル1</td>
-                <td class="attendance-table__item">サンプル2</td>
-                <td class="attendance-table__item">サンプル3</td>
-                <td class="attendance-table__item">サンプル4</td>
-                <td class="attendance-table__item">サンプル5</td>
+                <td class="attendance-table__item">{{ Auth::user()->name }}</td>
+                <td class="attendance-table__item">{{ $value->work_in }}</td>
+                <td class="attendance-table__item">{{ $value->work_out }}</td>
+                <td class="attendance-table__item">{{ $value->stamps_day }}</td>
+                <td class="attendance-table__item">{{ $value->stamps_day }}</td>
             </tr>
+            @endforeach
         </table>
     </div>
 </form>
