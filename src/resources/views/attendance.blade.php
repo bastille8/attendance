@@ -33,7 +33,10 @@
     svg.w-5.h-5 {
         width: 30px;
         height: 30px;
+        text-align: center;
     }
 </style>
-{{ $stamps->links(('vendor.pagination.tailwind')) }}
+<div class="paginate">
+    {{ $stamps->links('vendor.pagination.tailwind') }}
+</div>
 @endsection

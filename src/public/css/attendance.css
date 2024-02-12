@@ -23,3 +23,12 @@
     padding: 12px;
     width: 20%;
 }
+
+.paginate {
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
