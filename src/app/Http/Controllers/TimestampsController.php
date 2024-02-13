@@ -28,7 +28,7 @@ class TimestampsController extends Controller
     public function store(Request $request)
     {
         $stamps = new Stamp();
-        $stamps = Stamp::all()->where('stamps_day', $request->stamps_day)->first();
+        $stamps = Stamp::all()->where('stamps_day')->first();
         $stamps->update([
             'work_out' => Carbon::now(),
         ]);

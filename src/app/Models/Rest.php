@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Stamp;
 
 class Rest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'rest_id',
+        'rests_id',
         'rest_in',
         'rest_out',
     ];

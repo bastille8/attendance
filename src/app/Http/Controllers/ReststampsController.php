@@ -12,9 +12,9 @@ class ReststampsController extends Controller
     public function create(Request $request)
     {
         $rests = new Rest();
-        $rest_id = $request->input('rest_id');
-        $rests->update([
-            'rest_id' => $rest_id,
+        $rests_id = $request->input('rests_id');
+        $rests->create([
+            'rests_id' => $rests_id,
             'rest_in' => Carbon::now(),
         ]);
 
@@ -24,6 +24,7 @@ class ReststampsController extends Controller
     public function store(Request $request)
     {
         $rests = new Rest();
+        $rests = Rest::all()->where('rest_in')->first();
         $rests->update([
             'rest_out' => Carbon::now(),
         ]);

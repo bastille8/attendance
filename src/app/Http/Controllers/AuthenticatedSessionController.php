@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Stamp;
+use App\Models\Rest;
+use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 
 
@@ -13,28 +14,42 @@ class AuthenticatedSessionController extends Controller
 {
     public function index(Request $request)
     {
-        //stamps_dayに現日付を挿入し打刻日と照らし合わせる
-        $request->stamps_day = new Carbon(Carbon::now());
+        //現日時を取得
+        $today = Carbon::now()->toDateString();
+        dump($today);
         // Stampモデルからレコードを取得
-        $stamp = Stamp::all()->where('stamps_day', $request->stamps_day)->first();
+        $stamp = Stamp::select('stamps_day')->get();
+        dump($stamp);
 
-        // レコードが存在するかどうかをチェック
-        if ($stamp) {
+        // 同じ日に打刻されているかチェック
+        if ($stamp = $today) {
             // レコードが存在する場合
             $stamp = true;
         } else {
             // レコードが存在しない場合
             $stamp = false;
         }
+        dump($stamp);
 
-        return view('index', compact('stamp'));
+        $stampend = Stamp::select('work_out')->get();
+
+        // レコードが存在するかどうかをチェック
+        if ($stampend = null) {
+            // レコードが存在する場合
+            $stampend = true;
+        } else {
+            // レコードが存在しない場合
+            $stampend = false;
+        }
+
+        return view('index', compact('stamp', 'stampend'));
     }
 
     public function create()
     {
-        $stamps_day = DB::table('stamps', 'stamps_day')->paginate(5);
+        $stamps_day = Stamp::select('stamps_day')->get()->simplePaginate(5);
         $stamps = Stamp::Paginate(5);
-        return view('attendance', compact('stamps', 'stamps_day'));
+        return view('attendance', compact('stamps', 'stamps_day', 'rests'));
     }
 
 }
