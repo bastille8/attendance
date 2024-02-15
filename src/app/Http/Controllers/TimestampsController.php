@@ -27,8 +27,10 @@ class TimestampsController extends Controller
 
     public function store(Request $request)
     {
-        $stamps = new Stamp();
-        $stamps = Stamp::all()->where('stamps_day')->first();
+        $auth = auth()->user()->id;
+        $today = Carbon::now()->toDateString();
+        //↓要修正一番最後のレコードに更新されていく
+        $stamps = Stamp::where('stamps_id', $auth)->where('stamps_day', $today)->first();
         $stamps->update([
             'work_out' => Carbon::now(),
         ]);

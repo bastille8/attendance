@@ -15,7 +15,7 @@ class CreateStampsTable extends Migration
     {
         Schema::create('stamps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('stamps_id')->references('id')->on('users');;
+            $table->foreignId('stamps_id')->references('id')->on('users');
             $table->date('stamps_day');
             $table->time('work_in');
             $table->time('work_out')->nullable();

@@ -23,8 +23,9 @@ class ReststampsController extends Controller
 
     public function store(Request $request)
     {
-        $rests = new Rest();
-        $rests = Rest::all()->where('rest_in')->first();
+        $auth = auth()->user()->id;
+        // ログインしているIDで最後に休憩開始を押した形跡を探す(rest_outがnullになっているレコード)
+        $rests = Rest::where('rests_id', $auth)->where('rest_out', null)->first();
         $rests->update([
             'rest_out' => Carbon::now(),
         ]);
