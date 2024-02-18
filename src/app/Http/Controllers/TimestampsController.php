@@ -29,10 +29,13 @@ class TimestampsController extends Controller
     {
         $auth = auth()->user()->id;
         $today = Carbon::now()->toDateString();
-        //↓要修正一番最後のレコードに更新されていく
+        //ログインIDと当日の出勤記録を取得する
         $stamps = Stamp::where('stamps_id', $auth)->where('stamps_day', $today)->first();
+        //$startdate = Rest::select('rest_in');
+        //$enddate = Rest::select('rest_out');
         $stamps->update([
             'work_out' => Carbon::now(),
+            //'rest_time' => $enddate - $startdate,
         ]);
 
         return redirect('/');
