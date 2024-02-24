@@ -5,12 +5,13 @@
 @endsection
 
 @section('content')
-<!--日付別ページネイト-->
 
 <form class="form" action="/attendance" method="post">
     <div class="attendance-table">
         <td class="attendance-table__item">
-            {{ $stamps_day->links(('vendor.pagination.tailwind2')) }}
+            @foreach ($stamps as $value)
+            {{ $stamps_day->links(('vendor.pagination.tailwind2')) }}{{ $value->stamps_day }}
+            @endforeach
             <table class="attendance-table__inner">
                 <tr class="attendance-table__row">
                     <th class="attendance-table__header">名前</th>
@@ -24,8 +25,8 @@
                     <td class="attendance-table__item">{{ Auth::user()->name }}</td>
                     <td class="attendance-table__item">{{ $value->work_in }}</td>
                     <td class="attendance-table__item">{{ $value->work_out }}</td>
-                    <td class="attendance-table__item">{{ $value->stamps_day }}</td>
-                    <td class="attendance-table__item">{{ $value->stamps_day }}</td>
+                    <td class="attendance-table__item">{{ $value->rests_time }}</td>
+                    <td class="attendance-table__item">{{ $value->work_time }}</td>
                 </tr>
                 @endforeach
             </table>

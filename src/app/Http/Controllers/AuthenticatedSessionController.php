@@ -69,23 +69,10 @@ class AuthenticatedSessionController extends Controller
         return view('index', compact('stamp', 'stampend', 'rest', 'restend'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $startDate = Stamp::all();
-        //$startDate = Stamp::select('work_in')->get();
-        //$work_in = $startDate->work_in;
-        dump($startDate);
-        //dump($work_in);
-        $endDate = Stamp::select('work_out')->get();
-        dump($endDate);
-        //$endDate = $endDate -= $startDate;
-        //$endDate->diffInSeconds($startDate);
-        dump($endDate);
-        //$hours = floor($endDate / 3600);
-        //$minutes = floor(($endDate % 3600) / 60);
-        //$seconds = $endDate % 60;
-        $stamps_day = Stamp::select('stamps_day')->Paginate(5);
-        $stamps = Stamp::Paginate(5);
+        $stamps_day = Stamp::select('stamps_day')->Paginate(1);
+        $stamps = Stamp::Paginate(1);
         return view('attendance', compact('stamps', 'stamps_day'));
     }
 

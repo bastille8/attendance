@@ -14,6 +14,7 @@ class Rest extends Model
         'rests_id',
         'rest_in',
         'rest_out',
+        'rest_time',
     ];
 
     public function user()

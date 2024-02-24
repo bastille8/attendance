@@ -18,6 +18,7 @@ class CreateRestsTable extends Migration
             $table->foreignId('rests_id')->references('stamps_id')->on('stamps');
             $table->time('rest_in');
             $table->time('rest_out')->nullable();
+            $table->time('rest_time')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

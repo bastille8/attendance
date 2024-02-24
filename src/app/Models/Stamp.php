@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Rest;
 
@@ -17,8 +18,14 @@ class Stamp extends Model
         'stamps_day',
         'work_in',
         'work_out',
-        'rest_time'
+        'work_time',
+        'rests_time',
     ];
+
+    public function down()
+    {
+        Schema::dropIfExists('stamps');
+    }
 
     public function user()
     {

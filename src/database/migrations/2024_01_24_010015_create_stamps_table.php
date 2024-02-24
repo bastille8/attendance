@@ -19,7 +19,8 @@ class CreateStampsTable extends Migration
             $table->date('stamps_day');
             $table->time('work_in');
             $table->time('work_out')->nullable();
-            $table->time('rest_time')->nullable();
+            $table->time('work_time')->nullable();
+            $table->time('rests_time')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
