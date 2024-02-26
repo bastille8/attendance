@@ -42,9 +42,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function timestamp()
+    public function timestamps()
     {
-        return $this->hasMany(Stamp::class);
+        return $this->hasMany('App\Models\Stamp');
     }
     
 }

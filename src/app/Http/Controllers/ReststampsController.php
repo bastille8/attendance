@@ -53,20 +53,22 @@ class ReststampsController extends Controller
             $stamps->update([
                 'rests_time' => $rest_time,
             ]);
+        } else {
+            //休憩時間(累計)加算
+            $now = Carbon::now();
+            // ログインしているIDで当日の打刻情報を取得
+            $stamps = Stamp::where('stamps_id', $auth)->where('stamps_day', $today)->first();
+            // ログインしているIDで一番最後に休憩終了を押した(更新された)レコードを取得
+            $rests = Rest::where('rests_id', $auth)->where('updated_at', $now)->first();
+            // 時間を加算するときの為に秒数へ変換する("addSeconds"は整数でないとダメっぽい)
+            $rest_time = Carbon::parse($rests->rest_time)->second;
+            $rests_time = Carbon::parse($stamps->rests_time);
+            $totalrest = $rests_time->addSeconds($rest_time);
+
+            $stamps->update([
+                'rests_time' => $totalrest,
+            ]);
         }
-
-        //休憩時間(累計)加算
-        $stamps = Stamp::where('stamps_id', $auth)->where('stamps_day', $today)->first();
-        $rest_time = Carbon::parse($rests->rest_time);
-        dump($rest_time);
-        $rests_time = Carbon::parse($stamps->rests_time);
-        dump($rests_time);
-        $addSeconds = $rests_time->addSeconds($rest_time);
-        dd($addSeconds);
-
-        $stamps->update([
-            'rests_time' => $addSeconds,
-        ]);
 
         return redirect('/');
     }

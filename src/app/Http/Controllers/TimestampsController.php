@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Stamp;
-use App\Models\Rest;
 
 
 class TimestampsController extends Controller
@@ -51,14 +50,6 @@ class TimestampsController extends Controller
         $stamps->update([
             'work_time' => $diffInSeconds,
         ]);
-
-        //$today = Carbon::now()->toDateString();
-        //$rests = Rest::where('rests_id', $auth)->whereDate('created_at', $today)->get();
-        //$rest_time = Carbon::parse($rests->rest_time):
-
-        //$stamps->update([
-        //'rests_time' => $rest_time,
-        //]);
 
         return redirect('/');
     }

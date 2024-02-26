@@ -71,7 +71,7 @@ class AuthenticatedSessionController extends Controller
 
     public function create(Request $request)
     {
-        $stamps_day = Stamp::select('stamps_day')->Paginate(1);
+        $stamps_day = Stamp::select('stamps_day')->simplePaginate(1);
         $stamps = Stamp::Paginate(1);
         return view('attendance', compact('stamps', 'stamps_day'));
     }

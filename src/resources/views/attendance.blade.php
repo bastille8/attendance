@@ -9,8 +9,8 @@
 <form class="form" action="/attendance" method="post">
     <div class="attendance-table">
         <td class="attendance-table__item">
-            @foreach ($stamps as $value)
-            {{ $stamps_day->links(('vendor.pagination.tailwind2')) }}{{ $value->stamps_day }}
+            @foreach ($stamps_day as $value)
+            {{ $stamps_day->links('vendor.pagination.simple-tailwind') }}{{ $value->stamps_day }}
             @endforeach
             <table class="attendance-table__inner">
                 <tr class="attendance-table__row">
@@ -40,6 +40,6 @@
     }
 </style>
 <div class="paginate">
-    {{ $stamps->links('vendor.pagination.tailwind') }}
+    {{ $stamps->links('vendor.pagination.tailwind2') }}
 </div>
 @endsection

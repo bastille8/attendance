@@ -29,12 +29,12 @@ class Stamp extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User');
     }
 
-    public function timestamp()
+    public function reststamp()
     {
-        return $this->hasMany(Rest::class);
+        return $this->hasMany('App\Models\Rest');
     }
 
 }
