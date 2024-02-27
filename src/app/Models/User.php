@@ -42,9 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function timestamps()
+    public function stamps()
     {
-        return $this->hasMany('App\Models\Stamp');
+        // Stampモデルのstamps_idとUserモデルの名前を紐づける
+        return $this->hasMany(Stamp::class, 'stamps_id', 'name');
     }
     
 }

@@ -1,3 +1,7 @@
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/attendance.css') }}">
+@endsection
+
 @if ($paginator->hasPages())
     <nav>
         <ul class="pagination">

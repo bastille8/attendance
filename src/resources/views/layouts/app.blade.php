@@ -45,4 +45,10 @@
     </main>
 </body>
 
+<footer class="footer">
+    <div class="footer_title">
+        <small class="footer_small">Atte,inc.</small>
+    </div>
+</footer>
+
 </html>

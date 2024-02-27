@@ -22,7 +22,6 @@ class AuthenticatedSessionController extends Controller
         $today = Carbon::now()->toDateString();
         // ログインしているID(以下割愛)と一致し且つ当日に打刻されているレコードを探す
         $stamp = Stamp::where('stamps_id', $auth)->where('stamps_day', $today)->first();
-
         // 既に出勤しているかチェック
         if ($stamp == null) {
             // 出勤している場合
@@ -65,17 +64,14 @@ class AuthenticatedSessionController extends Controller
         } else {
             $restend = false;
         }
-
         return view('index', compact('stamp', 'stampend', 'rest', 'restend'));
     }
 
     public function create(Request $request)
     {
         $stamps_day = Stamp::select('stamps_day')->simplePaginate(1);
-        $stamps = Stamp::Paginate(1);
-        return view('attendance', compact('stamps', 'stamps_day'));
+        $date = Stamp::Paginate(5);
+        return view('attendance', compact('date', 'stamps_day'));
     }
-
+    
 }
-
-

@@ -29,12 +29,13 @@ class Stamp extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        // Stampモデルのstamps_id(外部キー)を第二引数として紐づける
+        return $this->belongsTo(User::class, 'stamps_id');
     }
 
-    public function reststamp()
+    public function rests()
     {
-        return $this->hasMany('App\Models\Rest');
+        return $this->hasMany(Rest::class);
     }
 
 }

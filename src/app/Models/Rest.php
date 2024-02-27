@@ -17,7 +17,7 @@ class Rest extends Model
         'rest_time',
     ];
 
-    public function timestamp()
+    public function stamp()
     {
         return $this->belongsTo('App\Models\Stamp');
     }
