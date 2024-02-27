@@ -42,7 +42,7 @@
     }
 </style>
 <div class="paginate">
-    {{ $date->links('vendor.pagination.bootstrap-4') }}
+    {{ $date->links('vendor.pagination.tailwind2') }}
 </div>
 
 {{--ページネーション候補}}
