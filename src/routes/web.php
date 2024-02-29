@@ -18,7 +18,10 @@ use App\Models\Rest;
 |
 */
 
-
+//メール認証機能用
+//Route::middleware('auth')->group(function () {
+    //Route::get('/addresscheck', [AuthenticatedSessionController::class, 'index']);
+//});
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'index']);
 });

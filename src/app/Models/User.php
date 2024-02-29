@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Stamp;
 
+//implements MustVerifyEmail{メール認証用}
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -47,5 +49,5 @@ class User extends Authenticatable
         // Stampモデルのstamps_idとUserモデルの名前を紐づける
         return $this->hasMany(Stamp::class, 'stamps_id', 'name');
     }
-    
+
 }
